@@ -71,7 +71,20 @@ $stmt->execute([$author]);
 
 $postNumber = $stmt->rowCount();
 
-echo "<h5>Broj postova autora $author je: $postNumber</h5>"
+echo "<h5>Broj postova autora $author je: $postNumber</h5>";
+
+echo "<hr>";
+
+#Dodavanje redaka(INSERT)
+$title = "dodani blog post";
+$body = "Ovo je neki random tekst";
+$author = "Milorad";
+$published = false;
+
+$sql = "INSERT INTO post(title, body, author, published) VALUES (:title, :body, :author, :published)";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['title' => $title, 'body' => $body, 'author' => $author, 'published' => $published]);
+echo "<h1>Post added!</h1>";
 
 
 
