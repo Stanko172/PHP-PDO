@@ -50,4 +50,29 @@ foreach($posts as $post){
     echo $post->title . ' - published' . "<br>";
 }
 
+echo "<hr>";
+
+#Fetching single row
+$id = 1;
+
+$query = "SELECT * FROM post WHERE id = :id";
+$stmt = $pdo->prepare($query);
+$stmt->execute(['id' => $id]);
+
+$post = $stmt->fetch(PDO::FETCH_OBJ);
+
+echo "<h1>$post->title</h1>";
+
+echo "<hr>";
+
+#Broj redaka(row count)
+$stmt = $pdo->prepare("SELECT * FROM post WHERE author = ?");
+$stmt->execute([$author]);
+
+$postNumber = $stmt->rowCount();
+
+echo "<h5>Broj postova autora $author je: $postNumber</h5>"
+
+
+
 ?>
