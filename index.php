@@ -96,6 +96,16 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute(['title' => $title]);
 echo "<h1>Post updated!</h1>";
 
+echo "<hr>";
+
+#Brisanje redaka(DELETE)
+$id = 3;
+
+$sql = "DELETE FROM post WHERE id = :id";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['id' => $id]);
+echo "<h1>Post deleted!</h1>";
+
 
 
 
