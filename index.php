@@ -86,6 +86,18 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute(['title' => $title, 'body' => $body, 'author' => $author, 'published' => $published]);
 echo "<h1>Post added!</h1>";
 
+echo "<hr>";
+
+#Ažuriranje redaka(UPDATE)
+$title = "ažurirani blog post";
+
+$sql = "UPDATE post SET title = :title WHERE id = 4";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['title' => $title]);
+echo "<h1>Post updated!</h1>";
+
+
+
 
 
 ?>
