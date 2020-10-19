@@ -106,6 +106,20 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute(['id' => $id]);
 echo "<h1>Post deleted!</h1>";
 
+echo "<hr>";
+
+#Pretraživanje podataka(SEARCH DATA)
+$search_txt = '%random%';
+
+$sql = "SELECT * FROM post WHERE body LIKE :search_txt";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['search_txt' => $search_txt]);
+$posts = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+foreach($posts as $post){
+    echo $post->title . "<br>";
+}
+
 
 
 
